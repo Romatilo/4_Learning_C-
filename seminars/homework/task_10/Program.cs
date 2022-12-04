@@ -5,11 +5,14 @@
 Console.Write("Enter number in the range from 100 to 999 -> ");
 int number = Convert.ToInt32(Console.ReadLine());
 
-while (number < 100 || number > 999)
+// Проверка, чтобы введенное число удовлетворяло условию:
+while (number < 100 || number > 999)            
 {
     Console.WriteLine("The number you've entered is out of range!");
     Console.Write("Enter number in the range from 100 to 999 -> ");
     number = Convert.ToInt32(Console.ReadLine());
 }
+
+// Вычисляем и выводим на печать вторую цифру трехзначного числа:
 int secondDigit = number % 100 / 10;
 Console.WriteLine("Second digit of your number is " + secondDigit);
