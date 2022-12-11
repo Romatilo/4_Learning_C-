@@ -3,6 +3,7 @@
 // 3, 5 -> 243 (3⁵)
 // 2, 4 -> 16
 
+
 int GetExponent(int A, int B)               // Метод возведения числа А в степень B
 {
     int result = 1;
@@ -19,3 +20,17 @@ Console.Write("Введите число B - степень, в которую �
 int N = Convert.ToInt32(Console.ReadLine());
 
 Console.Write(GetExponent(M, N));
+
+/*
+int[] GetArray()
+{
+    int[] array = new int[8];
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = new Random().Next(0, 2);
+    }
+    return array;
+}
+var str = string.Join(", ", GetArray());
+Console.WriteLine("[" + str + "]");
+*/
