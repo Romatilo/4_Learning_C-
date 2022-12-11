@@ -12,7 +12,7 @@ int[] GetArray(int size, int minValue, int maxValue)  // Метод заполн
     return array;
 }
 
-int findMaxNumber(int[] array)
+int findMaxNumber(int[] array)   // Метод нахожднеия максимального числа массива
 {
     int arrayLength = array.Length;
     int maxNumber = array[0];
@@ -23,7 +23,7 @@ int findMaxNumber(int[] array)
     return maxNumber;
 }
 
-int findMinNumber(int[] array)
+int findMinNumber(int[] array)   // Метод нахожднеия минимального числа массива
 {
     int arrayLength = array.Length;
     int minNumber = array[0];
@@ -40,3 +40,5 @@ int max = findMaxNumber(givenArray);
 int min = findMinNumber(givenArray);
 Console.WriteLine($"Разница между максимальным ({max})" +
 $"и минимальным({min}) элементами массива составляет {max - min}");
+// Строку вывода результата в консоль разбил на две из-за того, что длинная вышла.
+// неудобно было код читать
