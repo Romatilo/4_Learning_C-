@@ -12,26 +12,31 @@ int[] GetArray(int size, int minValue, int maxValue)  // Метод заполн
     return array;
 }
 
-int[] GetPairsMultiply(int[] array)
+int findMaxNumber(int[] array)
 {
     int arrayLength = array.Length;
-    // создание массива для перемноженных пар. 
-    // Если количество элементов не четное - +1 элемент в новом массиве: 
-    int[] pairsMultiply = new int[arrayLength / 2 + arrayLength % 2]; 
-
-    // Заполнение среднего элемента для нечетного количества элементов:
-    if (arrayLength % 2 != 0) 
+    int maxNumber = array[0];
+    for (int i = 0; i < arrayLength; i++)
     {
-        pairsMultiply[(arrayLength / 2)] = array[(arrayLength / 2)]; 
+        if (array[i] > maxNumber) maxNumber = array[i];
     }
-    // Перемножаем пары в исходном массиве. Резульат вносим в новый массив:
-    for (int i = 0; i <= (arrayLength / 2) - 1; i++)
-    {
-        pairsMultiply[i] = array[i] * array[arrayLength - i - 1];
-    }
-    return pairsMultiply;
+    return maxNumber;
 }
 
-int[] givenArray = GetArray(7, -99, 100);
-Console.WriteLine($"Массив: [{String.Join("; ", givenArray)}]");
+int findMinNumber(int[] array)
+{
+    int arrayLength = array.Length;
+    int minNumber = array[0];
+    for (int i = 0; i < arrayLength; i++)
+    {
+        if (array[i] < minNumber) minNumber = array[i];
+    }
+    return minNumber;
+}
 
+int[] givenArray = GetArray(8, -99, 100);
+Console.WriteLine($"Массив: [{String.Join("; ", givenArray)}]");
+int max = findMaxNumber(givenArray);
+int min = findMinNumber(givenArray);
+Console.WriteLine($"Разница между максимальным ({max})" +
+$"и минимальным({min}) элементами массива составляет {max - min}");
