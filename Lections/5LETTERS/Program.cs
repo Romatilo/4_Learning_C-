@@ -5,6 +5,9 @@
 Если буквы нет - буква не выделяется.
 Цель игры - за несколько попыток угадать загаданное слово.  */
 
+using System;
+using System.Linq;
+
 int CheckWord(string compareWord, char letter, int position)
 {
     int length = compareWord.Length;
@@ -19,16 +22,24 @@ int CheckWord(string compareWord, char letter, int position)
     }
     return guess;
 }
+
 string trueWord = "поезд";
-int result = 0;
-while (result == 22222);
+int[] result = new int[5];
+int[] victory = {2,2,2,2,2};
+bool isEqual = Enumerable.SequenceEqual(result, victory);
+for (int i = 0; i < 7; i++)
 {
     Console.WriteLine("Введите слово из 5 букв! ->");
     string inputWord = Console.ReadLine();
     int lengthWord = inputWord.Length;
-    for (int i = 0; i < lengthWord; i++)
+    for (int j = 0; j < lengthWord; j++)
     {
-        result = CheckWord(trueWord, inputWord[i], i);
-        Console.Write(result);
+        result[j] = CheckWord(trueWord, inputWord[j], j);
+
     }
+    Console.WriteLine(string.Join("", result));
+    Console.WriteLine(string.Join("", victory));
+    Console.WriteLine(isEqual);  
+    if (isEqual == true) break;
+
 }
