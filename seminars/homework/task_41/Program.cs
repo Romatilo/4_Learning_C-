@@ -5,8 +5,7 @@
 
 Console.WriteLine("Введите числа через пробел, положительные и отрицательные: ");
 // Считаем строку, разделим ее по пробелам, преобразуем значения в число, и внесем в массив)
-int[полет
-] array = Console.ReadLine().Split(' ').Select(s => Convert.ToInt32(s)).ToArray(); 
+int[] array = Console.ReadLine().Split(' ').Select(s => Convert.ToInt32(s)).ToArray(); 
 int size = array.Length; // узнаем длину полученного массива
 int countPositive = 0;
 for (int i = 0; i < size; i++) // посчитаем количество положительных элементов массива

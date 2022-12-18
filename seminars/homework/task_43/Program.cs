@@ -27,6 +27,6 @@ string Dec2Bin(int decimalNumber)           // метод перевода де�
     return StringReverse(binar);
 }
 
-Console.Write("Введите десятичное число: ");
+Console.Write("Введите десятичное число -> ");
 int deci = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Число в двоичном виде:    " + Dec2Bin(deci));
+Console.WriteLine("Ваше число в двоичном виде: " + Dec2Bin(deci));
