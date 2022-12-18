@@ -2,20 +2,21 @@
 // десятичное число в двоичное.
 // 45 -> 101101; 3 -> 11 2 -> 10
 
-/*string StringReverse(string inputString)
+string StringReverse(string inputString)  // Метод разворота строки
 {
     char[] arr = inputString.ToCharArray();
     int size = arr.Length;
-    char temp = arr[0];
-    for (int i = 0; i < size; i++)
+    char temp;
+    for (int i = 0; i < size/2; i++)
     {
+        temp = arr[i];
         arr[i] = arr[size-i-1];
+        arr[size-i-1] = temp;
     }
-    arr[size-1] = temp;
     return new string(arr);
 }
  
-string Dec2Bin(int decimalNumber)
+string Dec2Bin(int decimalNumber)           // метод перевода десятичного числа в двоичное
 {
     string binar = "";
     while ((decimalNumber) > 0)
@@ -26,12 +27,6 @@ string Dec2Bin(int decimalNumber)
     return StringReverse(binar);
 }
 
-Console.WriteLine("Введите десятичное число");
-string s = Console.ReadLine();
-Console.WriteLine(s);
+Console.Write("Введите десятичное число: ");
 int deci = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine(Dec2Bin(deci));
-*/
-
-string s = Console.ReadLine();
-Console.WriteLine(s);
+Console.WriteLine("Число в двоичном виде:    " + Dec2Bin(deci));
