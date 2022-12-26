@@ -2,7 +2,7 @@
 // элементы каждой строки двумерного массива.
 // Например, задан массив:
 // 1 4 7 2
-// 5 9 2а 3
+// 5 9 2 3
 // 8 4 2 4
 // В итоге получается вот такой массив:
 // 7 4 2 1
@@ -39,13 +39,22 @@ void PrintMatrix(int[,] inputMatrix)
 /// Метод сортировки пузьком от большего к меньшему
 void BubbleSortReverse(int[,] inputMatrix)
 {
-    rowsAmount = inputMatrix.GetLength(0);
-    columnsAmount = inputMatrix.GetLength(1);
-    for (int i = 0; i < rowsAmount - 1; i++)
+    int rowsAmount = inputMatrix.GetLength(0);
+    int columnsAmount = inputMatrix.GetLength(1);
+    for (int i = 0; i < rowsAmount; i++) //  Проходим по каждой строке
     {
-        for (int j = 0; j < rowsAmount - 1 - i; j++)
+        for (int j = 0; j < (columnsAmount - 1); j++)   // По каждому элементу строки, кроме последнего
         {
-
+            for (int k = 0; k < (columnsAmount - 1 - j); k++) // цикл сравнения соседних элементов
+            // "-j" - чтобы не делать лишних сравнений для уже отсортированной части строки массива
+            {
+                if (inputMatrix[i, k] < inputMatrix[i, k + 1])  //Сравниваем соседние элементы и меняем местами, если нужно
+                {
+                    int temp = inputMatrix[i, k + 1];
+                    inputMatrix[i, k + 1] = inputMatrix[i, k];
+                    inputMatrix[i, k] = temp;
+                }
+            }
         }
     }
 
@@ -57,4 +66,6 @@ Console.WriteLine("Введите количество столбцов");
 int columns = Convert.ToInt32(Console.ReadLine());
 int[,] newMatrix = GetMatrix(rows, columns, 0, 10);
 PrintMatrix(newMatrix);
-Console.WriteLine("Номер строки с минимальной суммой элементов: " + GetMinSumRow(newMatrix));
+BubbleSortReverse(newMatrix);
+Console.WriteLine("Отсортированная матрица: ");
+PrintMatrix(newMatrix);
