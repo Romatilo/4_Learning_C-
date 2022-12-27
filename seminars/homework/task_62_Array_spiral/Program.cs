@@ -6,16 +6,47 @@
 // 10 09 08 07
 
 
-/// Метод заполнения матрицы по спирали
-int[,] GetMatrix(int m, int n, int minValue, int maxValue)
+/// Метод заполнения квадратной матрицы размера n x n по спирали 
+int[,] GetMatrix(int n)
 {
-    int[,] matrix = new int[m, n];
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    int[,] matrix = new int[n, n];
+    int count = 0;  // счетчик количества заполненных ячеек матрицы
+    int i = 0; int j = 0;    
+    for (j = 0; j < n; j++)  // заполнение первой (i = 0) строки 
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        count++;
+        matrix[i, j] = count;
+    }
+    i = 0;
+    j = n - 1; // остаемся на крайнем правом столбике
+    int numberElements = n * n; // число элементов матрицы
+    while (count < numberElements){ 
+    // условие выхода из цикла - количество заполненных ячеек = количеству ячеек в матрице
+        for (int k = 0; k < n - 1; k++)  // движение вниз
         {
-            matrix[i, j] = new Random().Next(minValue, maxValue + 1);
+            i++;
+            count++;
+            matrix[i, j] = count;
         }
+        for (int k = 0; k < n - 1; k++)  // движение влево
+        {
+            j--;
+            count++;
+            matrix[i, j] = count;
+        }
+        for (int k = 0; k < n - 2; k++)  // движение вверх
+        {
+            i--;
+            count++;
+            matrix[i, j] = count;
+        }
+        for (int k = 0; k < n - 2; k++)  // движение вправо
+        {
+            j++;
+            count++;
+            matrix[i, j] = count;
+        }
+        n = n - 2;    // переход на внутренний виток
     }
     return matrix;
 }
@@ -32,36 +63,7 @@ void PrintMatrix(int[,] inputMatrix)
     }
 }
 
-/// Метод сортировки пузьком от большего к меньшему
-void BubbleSortReverse(int[,] inputMatrix)
-{
-    int rowsAmount = inputMatrix.GetLength(0);
-    int columnsAmount = inputMatrix.GetLength(1);
-    for (int i = 0; i < rowsAmount; i++) //  Проходим по каждой строке
-    {
-        for (int j = 0; j < (columnsAmount - 1); j++)   // По каждому элементу строки, кроме последнего
-        {
-            for (int k = 0; k < (columnsAmount - 1 - j); k++) // цикл сравнения соседних элементов
-            // "-j" - чтобы не делать лишних сравнений для уже отсортированной части строки массива
-            {
-                if (inputMatrix[i, k] < inputMatrix[i, k + 1])  //Сравниваем соседние элементы и меняем местами, если нужно
-                {
-                    int temp = inputMatrix[i, k + 1];
-                    inputMatrix[i, k + 1] = inputMatrix[i, k];
-                    inputMatrix[i, k] = temp;
-                }
-            }
-        }
-    }
-
-}
-
-Console.WriteLine("Введите количество строк");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите количество столбцов");
-int columns = Convert.ToInt32(Console.ReadLine());
-int[,] newMatrix = GetMatrix(rows, columns, 0, 10);
-PrintMatrix(newMatrix);
-BubbleSortReverse(newMatrix);
-Console.WriteLine("Отсортированная матрица: ");
+Console.WriteLine("Введите размер квадратной матрицы (количество строк)");
+int size = Convert.ToInt32(Console.ReadLine());
+int[,] newMatrix = GetMatrix(size);
 PrintMatrix(newMatrix);

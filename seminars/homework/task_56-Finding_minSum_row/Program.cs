@@ -61,4 +61,4 @@ Console.WriteLine("Введите количество столбцов");
 int columns = Convert.ToInt32(Console.ReadLine());
 int[,] newMatrix = GetMatrix(rows, columns, 0, 10);
 PrintMatrix(newMatrix);
-Console.WriteLine("Номер строки с минимальной суммой элементов: "  + GetMinSumRow(newMatrix));
+Console.WriteLine("\nНомер строки с минимальной суммой элементов: "  + GetMinSumRow(newMatrix));
