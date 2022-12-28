@@ -9,7 +9,7 @@
 // A (m+1, n+1) = A(m, A(m+1,n))
 
 
-double A(double m, double n)
+int A(int m, int n)
 {
     if (m == 0) return n+1;
     else if (n == 0) return A(m - 1, 1);
@@ -17,8 +17,8 @@ double A(double m, double n)
 }
 
 Console.Write("Введите значение m --> ");
-double m = Convert.ToInt64(Console.ReadLine());
+int m = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите значение n --> ");
-double n = Convert.ToInt64(Console.ReadLine());
+int n = Convert.ToInt32(Console.ReadLine());
 Console.Write($"Значение функции Аккермана А({m},{n}) = ");
 Console.WriteLine(A(m, n));
